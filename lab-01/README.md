@@ -100,7 +100,7 @@ npm run start:http
 | Method | Endpoint | Description | Expected Status |
 |:---:|:---:|:---|:---:|
 | GET | `/` | Returns a welcome message | 200 OK |
-| GET | `/about` | Returns student name and section as JSON | 200 OK |
+| GET | `/about` | Returns student name, registration number, and section as JSON | 200 OK |
 | GET | `/time` | Returns the current date and time using `new Date()` | 200 OK |
 | GET | `/anything` | Catch-all handler for unknown/undefined routes | 404 Not Found |
 
@@ -116,7 +116,7 @@ Displays the welcome message.
 
 ### 2. About Route
 
-Displays the student's name and section in JSON format.
+Displays the student's name, registration number, and section in JSON format.
 
 ![About route response](screenshots/about.png)
 
@@ -169,6 +169,10 @@ Displays the 404 Page Not Found response.
 2. **404 Middleware Placement:**
    - *Problem:* If 404 middleware is placed before defined routes, it intercepts all incoming requests.
    - *Solution:* Registered `app.use(...)` at the very end of the file after all defined route handlers so that only unmatched routes trigger 404.
+
+3. **Vercel Serverless Function Compatibility:**
+   - *Problem:* Standard Express apps only call `app.listen(3000)`. When deploying to Vercel, the serverless environment requires the Express application instance itself to be exported.
+   - *Solution:* Added `module.exports = app;` to `server.js` so Vercel can import and serve the handler as a serverless function without errors.
 
 ## Git and Repository Notes
 
