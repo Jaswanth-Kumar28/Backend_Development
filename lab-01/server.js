@@ -4,7 +4,7 @@
  * Course: Backend Development Fundamentals - Year II Term II
  * Student Name: Cicetty Jaswanth Kumar
  * Registration Number: 252U1R9026
- * Section: CSE-GEN-AI-1A-104
+ * Section: CSE-GEN-AI-2A-304
  * Faculty: Joel Prashanth D
  * ============================================================================
  *
@@ -50,7 +50,7 @@ app.get("/about", (req, res) => {
   res.status(200).json({
     name: "Cicetty Jaswanth Kumar",
     registrationNumber: "252U1R9026",
-    section: "CSE-GEN-AI-1A-104"
+    section: "CSE-GEN-AI-2A-304"
   });
 });
 

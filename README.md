@@ -3,7 +3,7 @@
 **Course:** Backend Development Fundamentals — Year II Term II  
 **Student Name:** Cicetty Jaswanth Kumar  
 **Registration Number:** 252U1R9026  
-**Section:** CSE-GEN-AI-1A-104  
+**Section:** CSE-GEN-AI-2A-304  
 **Institution:** Aurora  
 **Faculty:** Joel Prashanth D  
 

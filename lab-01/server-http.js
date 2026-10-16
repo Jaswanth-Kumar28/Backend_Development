@@ -3,7 +3,7 @@
  * Lab 1: Node.js and Express Server - Part 1: Built-in HTTP Server
  * Student Name: Cicetty Jaswanth Kumar
  * Registration Number: 252U1R9026
- * Section: CSE-GEN-AI-1A-104
+ * Section: CSE-GEN-AI-2A-304
  * Faculty: Joel Prashanth D
  * ============================================================================
  */
