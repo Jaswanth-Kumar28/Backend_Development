@@ -3,6 +3,7 @@
  * Lab 1: Node.js and Express Server
  * Course: Backend Development Fundamentals - Year II Term II
  * Student Name: Cicetty Jaswanth Kumar
+ * Registration Number: 252U1R9026
  * Section: CSE-GEN-AI-1A-104
  * Faculty: Joel Prashanth D
  * ============================================================================

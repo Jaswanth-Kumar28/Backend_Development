@@ -3,7 +3,7 @@
 ## Student Details
 
 - **Name:** Cicetty Jaswanth Kumar
-- **Registration Number:** [PLACEHOLDER — Add your Registration Number here]
+- **Registration Number:** 252U1R9026
 - **Section:** CSE-GEN-AI-1A-104
 - **Course:** Backend Development Fundamentals
 - **Lab Number:** 01
