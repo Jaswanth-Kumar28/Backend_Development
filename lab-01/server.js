@@ -49,6 +49,7 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.status(200).json({
     name: "Cicetty Jaswanth Kumar",
+    registrationNumber: "252U1R9026",
     section: "CSE-GEN-AI-1A-104"
   });
 });
@@ -70,6 +71,11 @@ app.use((req, res) => {
 });
 
 // Start Express server listening on port 3000
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+const PORT_NUMBER = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT_NUMBER, () => {
+    console.log(`Server running on http://localhost:${PORT_NUMBER}`);
+  });
+}
+
+module.exports = app;
