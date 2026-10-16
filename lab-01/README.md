@@ -10,8 +10,7 @@
 
 ## Live Link
 
-**Deployment URL:** [PLACEHOLDER — Add your live deployment URL here, e.g., Render / Railway / Vercel]  
-*(If not deployed, state: Local evaluation running on `http://localhost:3000`)*
+**Deployment URL:** [https://backend-development.vercel.app/](https://backend-development.vercel.app/)
 
 ## Objective
 

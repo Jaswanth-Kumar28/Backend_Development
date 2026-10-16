@@ -19,7 +19,7 @@ This repository contains all lab submissions and backend development assignments
 
 | Lab Folder | Title | Topics Covered | Status |
 |:---:|:---|:---|:---:|
-| [lab-01](./lab-01) | **Node.js and Express Server** | Built-in `http` module, Express.js setup, REST routing (`/`, `/about`, `/time`), 404 handler, and HTTP status codes | Completed |
+| [lab-01](./lab-01) | **Node.js and Express Server** | Built-in `http` module, Express.js setup, REST routing (`/`, `/about`, `/time`), 404 handler, and HTTP status codes | Completed ([Live Demo](https://backend-development.vercel.app/)) |
 | `lab-02` | *Coming Soon* | - | Upcoming |
 | `lab-03` | *Coming Soon* | - | Upcoming |
 | `lab-04` | *Coming Soon* | - | Upcoming |
