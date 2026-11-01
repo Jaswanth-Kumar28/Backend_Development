@@ -1,46 +1,79 @@
 # Lab 1: Node.js and Express Server
 
-## Student details
+## Student Details
 
 - **Name:** Cicetty Jaswanth Kumar
-- **Registration number:** 252U1R9026
+- **Registration Number:** 252U1R9026
 - **Section:** CSE-GEN-AI-2A-304
 - **Course:** Backend Development Fundamentals, Year II Term II
 
-## Objective
+## Description & Objective
 
-Create a basic HTTP server with Node.js's built-in `http` module and an Express server with routes and appropriate HTTP status codes.
+Demonstrate the fundamentals of backend web development using Node.js and Express.js by creating:
+1. A plain HTTP server using Node.js's native `http` module (`server-http.js`).
+2. A production-ready Express.js server (`server.js`) implementing structured routes, JSON middleware, error handling, and standard HTTP status codes.
 
-## Technologies
+## Technologies Used
 
-- Node.js and npm
-- Express.js
-- JavaScript
+- **Node.js** (v18+)
+- **Express.js** (v5)
+- **JavaScript (CommonJS)**
+- **Vercel** (Cloud Deployment)
 
-## Implementation and routes
+## Deployment
 
-`server-http.js` demonstrates a plain Node.js HTTP server. `server.js` implements the Express application:
+Live Application:
+https://backend-development.vercel.app
 
-| Method | Path | Description | Status |
-|---|---|---|---|
-| GET | `/` | Returns a welcome message. | 200 |
-| GET | `/about` | Returns the student's details as JSON. | 200 |
-| GET | `/time` | Returns the current date and time. | 200 |
-| GET | Any unmatched path | Returns a not-found message. | 404 |
+The application is deployed on Vercel with serverless function routing.
 
-## Run locally
+## API Endpoints / Routes
 
-Open a terminal in `lab-01/`, install dependencies, and start Express:
+Base URL (Local): `http://localhost:3000`  
+Base URL (Production): `https://backend-development.vercel.app`
 
-```bash
-npm install
-npm start
-```
+| Method | Endpoint | Description | Status Code | Response Format |
+|---|---|---|---|---|
+| `GET` | `/` | Welcome greeting message | `200 OK` | Text (`Welcome to Backend Development Fundamentals - Lab 1 Server!`) |
+| `GET` | `/about` | Student identification details | `200 OK` | JSON (`{ name, registrationNumber, section }`) |
+| `GET` | `/time` | Current server date and time | `200 OK` | Text (Timestamp string) |
+| `GET` | `/*` (unmatched) | Global 404 handler for invalid routes | `404 Not Found` | Text (`404 Not Found: The requested route does not exist.`) |
 
-The server listens on port 3000 by default; `PORT` can override it. To run the built-in HTTP server instead, use `npm run start:http` (port 3000).
+## How to Install and Run Locally
 
-## Testing and evidence
+1. Open a terminal and navigate to the `lab-01` directory:
+   ```bash
+   cd lab-01
+   ```
 
-Open `http://localhost:3000/`, `/about`, `/time`, and an unknown path in a browser or API client. Screenshots of the responses are stored in [`screenshots/`](./screenshots/).
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The Express application is deployed at [https://backend-development.vercel.app/](https://backend-development.vercel.app/).
+3. Start the Express server:
+   ```bash
+   npm start
+   ```
+   The server will start listening at `http://localhost:3000`.
+
+4. (Optional) Run the plain Node.js HTTP server:
+   ```bash
+   npm run start:http
+   ```
+
+## Screenshots
+
+The following screenshots verify each endpoint running and returning the expected status and payload:
+
+### 1. Root Route (`GET /`)
+![Root Route Screenshot](screenshots/home.png)
+
+### 2. About Route (`GET /about`)
+![About Route Screenshot](screenshots/about.png)
+
+### 3. Time Route (`GET /time`)
+![Time Route Screenshot](screenshots/time.png)
+
+### 4. 404 Route Not Found (`GET /not-found-route`)
+![404 Not Found Screenshot](screenshots/not-found.png)

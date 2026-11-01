@@ -1,132 +1,159 @@
 # Lab 2: SQLite database and CRUD routes
 
-**Course:** Backend Development Fundamentals
-**Year/Term:** Year II Term II
-**Content week:** Week 2 (slots 6–12)
-**Module:** SQLite and relational database operations
-**Name:** Cicetty Jaswanth Kumar
-**Registration number:** 252U1R9026
-**Section:** CSE Gen-AI 304 S24
-**Live link:** Not deployed. See [Deployment](#deployment).
+**Course:** Backend Development Fundamentals  
+**Year/Term:** Year II Term II  
+**Content week:** Week 2 (slots 6–12)  
+**Module:** SQLite and relational database operations  
+**Name:** Cicetty Jaswanth Kumar  
+**Registration number:** 252U1R9026  
+**Section:** CSE Gen-AI 304 S24  
+**Live link:** https://backend-development-0lch.onrender.com  
 
-## Objective
+## Objective & Brief Description
 
-Connect an Express server to a SQLite database and expose create, read, update, and delete operations over HTTP.
+Connect an Express server to a SQLite database and expose full CRUD (Create, Read, Update, and Delete) operations over HTTP. All database queries utilize parameterized SQL statements to safeguard against SQL injection vulnerabilities.
 
-## Install and run
+## Technologies Used
 
-From a terminal opened in `lab-02/`, install the dependencies and start the development server:
-
-```bash
-npm install
-npm run dev
-```
-
-`nodemon` restarts the server when files change. To run without automatic restarts, use `npm start`. The API listens at `http://localhost:3000` by default. Set the optional `PORT` environment variable to use another port. No environment variables are required.
-
-The database is `books.db` in this folder. Initialization opens SQLite, creates the `book` table if needed, and inserts ten sample books only when the table is empty. The server starts after database initialization succeeds. The database file is included in the repository so its data can be inspected.
-
-| Column | Type |
-|---|---|
-| `id` | INTEGER PRIMARY KEY |
-| `title` | TEXT |
-| `author` | TEXT |
-| `price` | INTEGER |
-| `pages` | INTEGER |
-
-## API endpoints
-
-Base URL: `http://localhost:3000`
-
-| Method | Path | Description |
-|---|---|---|
-| GET | `/books/` | Return all books. |
-| GET | `/books/:bookId/` | Return the book with the specified ID. |
-| POST | `/books/` | Create a book. |
-| PUT | `/books/:bookId/` | Replace the specified book's details. |
-| DELETE | `/books/:bookId/` | Delete the specified book. |
-
-POST and PUT expect JSON with non-empty `title` and `author` strings and integer `price` and `pages` values. Queries that use request data are parameterized. Successful responses use status codes 200 (GET, PUT, DELETE) and 201 (POST); invalid IDs or bodies return 400, and valid IDs for missing books return 404.
-
-## Postman test checklist
-
-Start the server, then send these requests to `http://localhost:3000`:
-
-| Test | Method and path | Expected result |
-|---|---|---|
-| List books | `GET /books/` | 200 and ten initial books |
-| Get a book | `GET /books/1/` | 200 and book 1 |
-| Create a book | `POST /books/` | 201 and the created book |
-| Update a book | `PUT /books/1/` | 200 and the updated book |
-| Delete a book | `DELETE /books/1/` | 200 and a deletion confirmation |
-| Missing book | `GET /books/987654321/` | 404 |
-| Invalid ID | `GET /books/not-an-id/` | 400 |
-| Update missing book | `PUT /books/987654321/` | 404 |
-| Delete missing book | `DELETE /books/987654321/` | 404 |
-| Invalid create body | `POST /books/` with invalid or incomplete JSON fields | 400 |
-
-For POST, select **Body → raw → JSON** and use:
-
-```json
-{
-  "title": "Test Book",
-  "author": "Test Author",
-  "price": 500,
-  "pages": 300
-}
-```
-
-For PUT, use `PUT /books/1/` with:
-
-```json
-{
-  "title": "Updated Test Book",
-  "author": "Updated Author",
-  "price": 600,
-  "pages": 350
-}
-```
-
-After POST, PUT, and DELETE, inspect `books.db` to confirm that the changes persisted. If the SQLite CLI is installed, run these commands from `lab-02/`:
-
-```text
-sqlite3 books.db "SELECT * FROM book;"
-sqlite3 books.db "SELECT COUNT(*) FROM book;"
-```
-
-Compare the CLI results with the API responses. The SQLite CLI is a separate tool and is not installed by this project.
-
-## Screenshots
-
-No Postman or database screenshots have been captured yet. Save genuine screenshots in `screenshots/` and replace the checklist/template below with the actual files; do not report a screenshot as present until it has been added.
-
-- [ ] Successful GET all, GET one, POST, PUT, and DELETE responses
-- [ ] Useful error responses
-- [ ] SQLite database contents
-
-Required README image-reference format (add the corresponding real image before using each reference):
-
-```markdown
-![Postman GET all books response](screenshots/get-all-books.png)
-![Postman GET one book response](screenshots/get-one-book.png)
-![Postman POST book response](screenshots/post-book.png)
-![Postman PUT book response](screenshots/put-book.png)
-![Postman DELETE book response](screenshots/delete-book.png)
-![SQLite book table](screenshots/database-view.png)
-```
-
-## Problems faced and solutions
-
-- The server must not accept requests before SQLite is ready, so initialization awaits the database connection and table setup before listening.
-- Sample rows should not be duplicated on each restart, so they are inserted only when the table is empty.
-- Invalid IDs and request bodies are rejected with 400; valid IDs without matching records return 404.
-
-## Viva topics
-
-- **Why await the database call?** To ensure initialization and dependent database operations complete before the next step, including starting the server.
-- **What is SQL injection, and how do placeholders help?** SQL injection is the alteration of a query through untrusted input. Placeholders bind input as values rather than SQL syntax.
-- **When is PUT used instead of POST?** PUT updates/replaces a resource at a known URL; POST commonly creates a resource in a collection.
+- **Node.js** (v18+)
+- **Express.js** (v5)
+- **SQLite3** (`sqlite3` v6.0.1) & **SQLite Wrapper** (`sqlite` v5.1.1)
+- **Nodemon** (v3 for local development)
+- **Render** (Cloud Web Service deployment)
 
 ## Deployment
 
-**Status: Not deployed; no live URL is available yet.** Deployment requires choosing a hosting provider and completing its account/project setup. Before publishing, configure the service to run `npm start` and provide persistent storage for `books.db`; an ephemeral deployment filesystem may lose database changes on restart or redeployment. After deployment, add and verify the public URL here. If deployment is unavailable, include real Postman screenshots for every endpoint above.
+Live Application:
+https://backend-development-0lch.onrender.com
+
+The application is deployed on Render as a Web Service running Node.js (`npm start`). On startup, the application connects to the SQLite database (`books.db`), creates the `book` table if it does not already exist, and seeds it with initial sample records if empty.
+
+## SQLite Database Information
+
+The database is stored in `books.db` located in the `lab-02/` directory.
+
+### Table Schema: `book`
+
+| Column | Type | Details |
+|---|---|---|
+| `id` | `INTEGER PRIMARY KEY` | Auto-incremented unique book identifier |
+| `title` | `TEXT` | Title of the book (non-empty string) |
+| `author` | `TEXT` | Author of the book (non-empty string) |
+| `price` | `INTEGER` | Price of the book in INR (integer) |
+| `pages` | `INTEGER` | Total page count (integer) |
+
+### Initialization and Seeding
+
+On startup, `initializeDBAndServer()` executes:
+1. Connects to `books.db` via `sqlite3.Database` driver.
+2. Creates the `book` table using `CREATE TABLE IF NOT EXISTS book (...)`.
+3. Checks `SELECT COUNT(*) AS count FROM book`. If the table is empty (`count === 0`), it populates 10 sample books.
+4. Starts the Express HTTP listener once the database connection and tables are verified.
+
+## API Endpoints / Routes
+
+Base URL (Local): `http://localhost:3000`  
+Base URL (Production): `https://backend-development-0lch.onrender.com`
+
+| Method | Endpoint | Description | Expected Status Codes |
+|---|---|---|---|
+| `GET` | `/` | Welcome message and API endpoints index | `200 OK` |
+| `GET` | `/books/` | Retrieve all books from the database | `200 OK` |
+| `GET` | `/books/:bookId/` | Retrieve a single book by ID | `200 OK`, `400 Bad Request` (invalid ID), `404 Not Found` (missing book) |
+| `POST` | `/books/` | Create a new book | `201 Created`, `400 Bad Request` (invalid body) |
+| `PUT` | `/books/:bookId/` | Update an existing book's details | `200 OK`, `400 Bad Request` (invalid body/ID), `404 Not Found` (missing book) |
+| `DELETE` | `/books/:bookId/` | Remove a book by ID | `200 OK`, `400 Bad Request` (invalid ID), `404 Not Found` (missing book) |
+
+## Installation and How to Run Locally
+
+1. Open a terminal and navigate to the `lab-02` directory:
+   ```bash
+   cd lab-02
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the server:
+   - For development (with auto-reload):
+     ```bash
+     npm run dev
+     ```
+   - For production / standard execution:
+     ```bash
+     npm start
+     ```
+
+The API will listen at `http://localhost:3000` by default (or the port defined by `process.env.PORT`).
+
+## Postman Test Checklist
+
+| Test Case | Method & Route | Expected Status & Result |
+|---|---|---|
+| List all books | `GET /books/` | `200 OK` with JSON array of books |
+| Get single book | `GET /books/1/` | `200 OK` with book object |
+| Create a book | `POST /books/` | `201 Created` with created book object including new `id` |
+| Update a book | `PUT /books/1/` | `200 OK` with updated book object |
+| Delete a book | `DELETE /books/1/` | `200 OK` with deletion confirmation message |
+| Missing book | `GET /books/987654321/` | `404 Not Found` |
+| Invalid ID format | `GET /books/not-an-id/` | `400 Bad Request` |
+| Update missing book | `PUT /books/987654321/` | `404 Not Found` |
+| Delete missing book | `DELETE /books/987654321/` | `404 Not Found` |
+| Invalid create body | `POST /books/` (`{}`) | `400 Bad Request` |
+
+### Sample POST Request Body:
+```json
+{
+  "title": "The Hobbit",
+  "author": "J. R. R. Tolkien",
+  "price": 450,
+  "pages": 310
+}
+```
+
+### Sample PUT Request Body:
+```json
+{
+  "title": "The Hobbit - Special Edition",
+  "author": "J. R. R. Tolkien",
+  "price": 550,
+  "pages": 320
+}
+```
+
+## Screenshots
+
+The following screenshots demonstrate all required endpoints and database verification:
+
+### 1. GET All Books (`GET /books/`)
+![Postman GET all books response](screenshots/get-all-books.png)
+
+### 2. GET One Book (`GET /books/:bookId/`)
+![Postman GET one book response](screenshots/get-one-book.png)
+
+### 3. POST Create Book (`POST /books/`)
+![Postman POST book response](screenshots/post-book.png)
+
+### 4. PUT Update Book (`PUT /books/:bookId/`)
+![Postman PUT book response](screenshots/put-book.png)
+
+### 5. DELETE Book (`DELETE /books/:bookId/`)
+![Postman DELETE book response](screenshots/delete-book.png)
+
+### 6. SQLite Database Table Verification
+![SQLite book table](screenshots/database-view.png)
+
+## Problems Faced and Solutions
+
+- **GLIBC Compatibility on Linux Deployments:** Older `sqlite3` versions (< v6) compiled against newer glibc versions could encounter `/lib/x86_64-linux-gnu/libm.so.6: version 'GLIBC_2.38' not found` on Ubuntu-based deployment environments like Render. Upgraded to `sqlite3` `^6.0.1` which properly links and provides compatibility with Render's Linux runtime.
+- **Asynchronous Initialization Order:** Express shouldn't accept incoming traffic before SQLite establishes connection and verifies tables. Solution: Wrapped startup in async `initializeDBAndServer()` so `app.listen()` is only called after SQLite schema check and seeding complete.
+- **Idempotent Data Seeding:** Avoided duplicate sample records on server restarts by querying `SELECT COUNT(*) AS count FROM book` and only inserting sample records when `count === 0`.
+- **Input Validation & Parameterized Queries:** Added `isValidBook` and `getBookId` helpers to sanitize parameters and used SQL placeholders (`?`) to prevent SQL injection.
+
+## Viva Topics
+
+- **Why await database initialization before calling `app.listen()`?** Ensures tables exist and the connection is ready before any HTTP requests are accepted, preventing unhandled database connection errors.
+- **What is SQL injection, and how do placeholders help?** SQL injection occurs when malicious SQL code is concatenated into queries. Placeholders (`?`) treat input strictly as literal values rather than executable code.
+- **When is PUT used instead of POST?** `POST` is used to create a new resource where the server typically assigns the ID. `PUT` is used to replace or update an existing resource at a specific target URI.

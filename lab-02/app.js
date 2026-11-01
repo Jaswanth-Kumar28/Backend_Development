@@ -43,6 +43,19 @@ const getBookId = (id) => {
   return Number.isSafeInteger(bookId) ? bookId : null;
 };
 
+app.get("/", (request, response) => {
+  response.status(200).json({
+    message: "Welcome to Lab 2 Books API",
+    endpoints: [
+      "GET /books/",
+      "GET /books/:bookId/",
+      "POST /books/",
+      "PUT /books/:bookId/",
+      "DELETE /books/:bookId/"
+    ]
+  });
+});
+
 app.get("/books/", async (request, response, next) => {
   try {
     const books = await database.all("SELECT * FROM book");
