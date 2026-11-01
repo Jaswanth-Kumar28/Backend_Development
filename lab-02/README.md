@@ -128,22 +128,22 @@ The API will listen at `http://localhost:3000` by default (or the port defined b
 The following screenshots demonstrate all required endpoints and database verification:
 
 ### 1. GET All Books (`GET /books/`)
-![Postman GET all books response](screenshots/get-all-books.png)
+![Get All Books](screenshots/get-all-books.png)
 
 ### 2. GET One Book (`GET /books/:bookId/`)
-![Postman GET one book response](screenshots/get-one-book.png)
+![Get One Book](screenshots/get-one-book.png)
 
 ### 3. POST Create Book (`POST /books/`)
-![Postman POST book response](screenshots/post-book.png)
+![POST Book](screenshots/post-book.png)
 
 ### 4. PUT Update Book (`PUT /books/:bookId/`)
-![Postman PUT book response](screenshots/put-book.png)
+![PUT Book](screenshots/put-book.png)
 
 ### 5. DELETE Book (`DELETE /books/:bookId/`)
-![Postman DELETE book response](screenshots/delete-book.png)
+![DELETE Book](screenshots/delete-book.png)
 
 ### 6. SQLite Database Table Verification
-![SQLite book table](screenshots/database-view.png)
+![Database View](screenshots/database-view.png)
 
 ## Problems Faced and Solutions
 

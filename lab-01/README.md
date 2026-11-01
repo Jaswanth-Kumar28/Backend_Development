@@ -67,13 +67,13 @@ Base URL (Production): `https://backend-development.vercel.app`
 The following screenshots verify each endpoint running and returning the expected status and payload:
 
 ### 1. Root Route (`GET /`)
-![Root Route Screenshot](screenshots/home.png)
+![Home](screenshots/home.png)
 
 ### 2. About Route (`GET /about`)
-![About Route Screenshot](screenshots/about.png)
+![About](screenshots/about.png)
 
 ### 3. Time Route (`GET /time`)
-![Time Route Screenshot](screenshots/time.png)
+![Time](screenshots/time.png)
 
 ### 4. 404 Route Not Found (`GET /not-found-route`)
-![404 Not Found Screenshot](screenshots/not-found.png)
+![404 Not Found](screenshots/not-found.png)
