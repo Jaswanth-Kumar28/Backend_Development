@@ -1,11 +1,13 @@
 # Lab 1: Node.js and Express Server
 
-## Student Details
-
-- **Name:** Cicetty Jaswanth Kumar
-- **Registration Number:** 252U1R9026
-- **Section:** CSE-GEN-AI-2A-304
-- **Course:** Backend Development Fundamentals, Year II Term II
+**Course:** Backend Development Fundamentals  
+**Year/Term:** Year II Term II  
+**Content week:** Week 1 (slots 1–5)  
+**Module:** Introduction to Backend Development with Node.js and Express  
+**Name:** Cicetty Jaswanth Kumar  
+**Registration number:** 252U1R9026  
+**Section:** CSE Gen-AI 304 S24  
+**Live link:** [https://backend-development.vercel.app](https://backend-development.vercel.app)
 
 ## Description & Objective
 
