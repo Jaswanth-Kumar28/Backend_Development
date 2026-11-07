@@ -35,6 +35,23 @@ Backend-Term-2/
 │   │   └── database-view.png
 │   └── README.md
 │
+├── lab-03/
+│   ├── package.json
+│   ├── app.js
+│   ├── books.db
+│   ├── screenshots/
+│   │   ├── 01-welcome.png
+│   │   ├── 02-get-books.png
+│   │   ├── 03-search-filter.png
+│   │   ├── 04-sort-pagination.png
+│   │   ├── 05-validation-error.png
+│   │   ├── 06-create-book.png
+│   │   ├── 07-get-single-book.png
+│   │   ├── 08-update-book.png
+│   │   ├── 09-delete-book.png
+│   │   └── 10-not-found.png
+│   └── README.md
+│
 └── README.md
 ```
 
@@ -64,6 +81,18 @@ Backend-Term-2/
   - `PUT /books/:bookId/` — Update an existing book
   - `DELETE /books/:bookId/` — Delete a book by ID
 
+### [Lab 3: REST API, Query Parameters, Validation, Debugging](./lab-03/)
+- **Description:** Advanced REST API supporting partial title search (`search_q`), price range filtering (`min_price`, `max_price`), column sorting (`order_by`, `order`), pagination (`limit`, `offset`), and comprehensive request body validation.
+- **Technologies:** Node.js, Express.js, SQLite3 (`sqlite3`), `sqlite`
+- **Live Deployment:** Pending Render Web Service deployment
+- **Endpoints:**
+  - `GET /` — Welcome message & route directory
+  - `GET /books` — Books collection with search, price filters, sorting, and pagination
+  - `GET /books/:bookId` — Retrieve single book by ID
+  - `POST /books` — Create a new book with validation
+  - `PUT /books/:bookId` — Update an existing book with validation
+  - `DELETE /books/:bookId` — Delete a book by ID
+
 ---
 
 ## Quick Start
@@ -82,3 +111,9 @@ npm install
 npm start
 ```
 
+### Running Lab 3 Locally
+```bash
+cd lab-03
+npm install
+npm start
+```
